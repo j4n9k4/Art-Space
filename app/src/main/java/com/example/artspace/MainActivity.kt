@@ -17,6 +17,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -28,6 +29,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.artspace.ui.theme.ArtSpaceTheme
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.setValue
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +68,32 @@ fun ArtWorkLayout(
 
 )
 {
+    var index by remember { mutableIntStateOf(0) }
+    val artworks = arrayOf(
+        R.drawable.artwork_1,
+        R.drawable.artwork_2,
+        R.drawable.artwork_3,
+        R.drawable.artwork_4
+    )
+    val names = arrayOf(
+        R.string.artwork_1,
+        R.string.artwork_2,
+        R.string.artwork_3,
+        R.string.artwork_4
+    )
+    val artists  = arrayOf(
+        R.string.artist_1,
+        R.string.artist_2,
+        R.string.artist_3,
+        R.string.artist_4
+    )
+    val years = arrayOf(
+        R.string.year_1,
+        R.string.year_2,
+        R.string.year_3,
+        R.string.year_4
+    )
+
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -77,7 +107,7 @@ fun ArtWorkLayout(
 
         ) {
             Image(
-                painter = painterResource(R.drawable.artwork_1),
+                painter = painterResource(artworks[index]),
                 contentDescription = "Image of a Artwork",
                 modifier = Modifier.padding(16.dp)
             )
@@ -91,15 +121,14 @@ fun ArtWorkLayout(
             )
             {
                 Text(
-                    text = stringResource(R.string.artwork_1),
+                    text = stringResource(names[index]),
                     fontSize = 30.sp,
                     modifier = modifier.align(Alignment.Start)
 
                 )
                 Text(
-                    text = "${stringResource(R.string.artist_1)}(${stringResource(R.string.year_1)})",
+                    text = "${stringResource(artists[index])}(${stringResource(years[index])})",
                     fontWeight = FontWeight.Bold,
-                    color = Color.Black
                 )
             }
         }
@@ -110,11 +139,23 @@ fun ArtWorkLayout(
         ) {
             Buttons(
                 label = R.string.next,
-                onClickFun = {}
+                onClickFun = {
+                    when(index){
+
+                        in 0..(artists.size - 2) -> index++
+                        else -> index = 0
+                    }
+                }
             )
             Buttons(
                 label = R.string.previous,
-                onClickFun = {}
+                onClickFun = {
+                    when(index)
+                    {
+                        in 1..(artists.size) -> index--
+                        else -> index = 0
+                    }
+                }
             )
         }
     }

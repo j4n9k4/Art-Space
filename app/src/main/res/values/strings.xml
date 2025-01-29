@@ -2,10 +2,23 @@
 
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    
     <string name="app_name">Art Space</string>
+
     <string name="artwork_1">Flower</string>
     <string name="artist_1">Tania</string>
     <string name="year_1">2025</string>
+
+    <string name="artwork_2">Nature</string>
+    <string name="artist_2">Anna</string>
+    <string name="year_2">2023</string>
+
+    <string name="artwork_3">Girl</string>
+    <string name="artist_3">Dan</string>
+    <string name="year_3">2022</string>
+
+    <string name="artwork_4">Bird</string>
+    <string name="artist_4">Anna</string>
+    <string name="year_4">2000</string>
+
 
 </resources>
