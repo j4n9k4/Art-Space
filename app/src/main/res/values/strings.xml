@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    
+    <string name="app_name">Art Space</string>
+    <string name="artwork_1">Flower</string>
+    <string name="artist_1">Tania</string>
+    <string name="year_1">2025</string>
+
+</resources>
